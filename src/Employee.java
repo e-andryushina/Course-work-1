@@ -3,8 +3,8 @@ import java.util.Objects;
 public class Employee {
 
     private static int countEmployeeID = 1;
-    private final int employeeID;
-    private final String employee;
+    private int employeeID;
+    private String employee;
     private String businessUnit;
     private double salary;
 

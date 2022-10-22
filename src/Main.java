@@ -11,7 +11,7 @@ public class Main {
         employee[6] = new Employee("Екатеринина Екатерина", "5", 98543);
         employee[7] = new Employee("Алехина Алеся", "5", 65439);
 
-        EmployeeReport employeeReport = new EmployeeReport(10);
+        EmployeeReport employeeReport = new EmployeeReport(employee.length);
         employeeReport.salaryMonthMax();
         employeeReport.salaryMonthMin();
         employeeReport.salaryMonthTotal();
@@ -19,7 +19,7 @@ public class Main {
         employeeReport.salaryIndexation(0.04d);
         employeeReport.printAllEmployees();
         employeeReport.findLessThan(100_000);
-        employeeReport.findMoreThan(100_000);
+        employeeReport.findMoreThanOrEqualTo(100_000);
 
 
         }

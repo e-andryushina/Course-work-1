@@ -7,18 +7,17 @@ public class EmployeeReport {
     private String employeeMaxSalary;
     private String employeeMinSalary;
 
-    public EmployeeReport (int rSize) {
-        this.employees = new Employee[rSize];
+    public EmployeeReport (int reportLength) {
+        this.employees = new Employee[reportLength];
     }
 
-
-    public static int  sizeCount() {
-        int size = 0;
+    public static int  employeeQuantity() {
+        int employeeQuantity = 0;
         for (Employee employee : employees) {
             if (employee != null)
-                size++;
+                employeeQuantity++;
         }
-        return size;
+        return employeeQuantity;
     }
 
     public static void printAllEmployees() {
@@ -39,7 +38,7 @@ public class EmployeeReport {
                 salaryMonthTotal += employee.getSalary();
             }
         }
-        System.out.println("Сумма затрат на зарплаты отдела за месяц составляет " + salaryMonthTotal + " рублей.");
+        System.out.println("Сумма затрат на зарплаты за месяц составляет " + salaryMonthTotal + " рублей.");
         return salaryMonthTotal;
     }
 
@@ -53,7 +52,7 @@ public class EmployeeReport {
             }
         }
         System.out.println("У работника " + employeeMaxSalary +
-                " максимальная зарплата в отделе - " + salaryMonthMax +
+                " максимальная зарплата - " + salaryMonthMax +
                 " рублей.");
         return salaryMonthMax;
     }
@@ -67,13 +66,13 @@ public class EmployeeReport {
             }
         }
         System.out.println("У работника " + employeeMinSalary +
-                " минимальная зарплата в отделе - " + salaryMonthMin + " рублей.");
+                " минимальная зарплата - " + salaryMonthMin + " рублей.");
         return salaryMonthMin;
     }
 
     public double salaryMonthAverage() {
-        double salaryMonthAverage = salaryMonthTotal() / sizeCount();
-        System.out.println("Средняя зарплата работников отдела составляет: " + salaryMonthAverage);
+        double salaryMonthAverage = salaryMonthTotal() / employeeQuantity();
+        System.out.println("Средняя зарплата работников составляет: " + salaryMonthAverage);
         return salaryMonthAverage;
     }
 
@@ -102,7 +101,7 @@ public class EmployeeReport {
     }
 
 
-    public void findMoreThan(int number) {
+    public void findMoreThanOrEqualTo(int number) {
         for (Employee employee : employees) {
             if (employee != null && employee.getSalary() >= number) {
                 System.out.println(employee);
