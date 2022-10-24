@@ -1,17 +1,7 @@
 public class EmployeeReport {
 
-    public static Employee[] employees;
-    private static double salaryMonthTotal;
-    private double salaryMonthMin = Double.MAX_VALUE;
-    private double salaryMonthMax = Double.MIN_VALUE;
-    private String employeeMaxSalary;
-    private String employeeMinSalary;
 
-    public EmployeeReport (int reportLength) {
-        this.employees = new Employee[reportLength];
-    }
-
-    public static int  employeeQuantity() {
+    public int  employeeQuantity(Employee[] employees) {
         int employeeQuantity = 0;
         for (Employee employee : employees) {
             if (employee != null)
@@ -20,7 +10,8 @@ public class EmployeeReport {
         return employeeQuantity;
     }
 
-    public static void printAllEmployees() {
+    public void printAllEmployees(Employee[] employees) {
+        System.out.println("Список работников");
         for (Employee employee : employees) {
             if (employee != null) {
                 System.out.println(employee);
@@ -31,20 +22,20 @@ public class EmployeeReport {
         }
     }
 
-    public double salaryMonthTotal() {
-
+    public double salaryMonthTotal(Employee[] employees) {
+        double salaryMonthTotal=0;
         for (Employee employee : employees) {
             if (employee != null) {
                 salaryMonthTotal += employee.getSalary();
             }
         }
-        System.out.println("Сумма затрат на зарплаты за месяц составляет " + salaryMonthTotal + " рублей.");
         return salaryMonthTotal;
     }
 
 
-    public double salaryMonthMax() {
-
+    public void salaryMonthMax(Employee[] employees) {
+        String employeeMaxSalary = null;
+        double salaryMonthMax = Double.MIN_VALUE;
         for (Employee employee : employees) {
             if (employee != null && employee.getSalary() > salaryMonthMax) {
                 salaryMonthMax = employee.getSalary();
@@ -54,11 +45,12 @@ public class EmployeeReport {
         System.out.println("У работника " + employeeMaxSalary +
                 " максимальная зарплата - " + salaryMonthMax +
                 " рублей.");
-        return salaryMonthMax;
     }
 
 
-    public double salaryMonthMin() {
+    public void salaryMonthMin(Employee[] employees) {
+        String employeeMinSalary = null;
+        double salaryMonthMin = Double.MAX_VALUE;
         for (Employee employee : employees) {
             if (employee != null && employee.getSalary() < salaryMonthMin) {
                 salaryMonthMin = employee.getSalary();
@@ -67,46 +59,52 @@ public class EmployeeReport {
         }
         System.out.println("У работника " + employeeMinSalary +
                 " минимальная зарплата - " + salaryMonthMin + " рублей.");
-        return salaryMonthMin;
+
     }
 
-    public double salaryMonthAverage() {
-        double salaryMonthAverage = salaryMonthTotal() / employeeQuantity();
+    public void salaryMonthAverage(Employee[] employees) {
+        double salaryMonthAverage = salaryMonthTotal(employees) / employeeQuantity(employees);
         System.out.println("Средняя зарплата работников составляет: " + salaryMonthAverage);
-        return salaryMonthAverage;
+
     }
 
 
-    public void salaryIndexation(double salaryIndex) {
+    public void salaryIndexation(Employee[] employees, double salaryIndex) {
         System.out.println("Заработная плата работников после идексации, руб.");
         for (Employee employee : employees) {
             if (employee != null) {
-                double newSalary = employee.getSalary() * salaryIndex;
-                employee.setSalary(newSalary);
-                System.out.println(employee.getEmployeeID() +
-                        "/" + employee.getEmployee() +
-                        "/" + employee.getSalary());
+                employee.setSalary(employee.getSalary() + employee.getSalary() * salaryIndex);
+                System.out.println(employee);
             }
-            return;
+
         }
     }
 
-    public void findLessThan(int number) {
+    public void findLessThan(Employee[] employees, int sum) {
+        System.out.println("Работники с зарплатой меньше " + sum + " рублей.");
         for (Employee employee : employees) {
-            if (employee != null && employee.getSalary() < number) {
+            if (employee != null && employee.getSalary() < sum) {
                 System.out.println(employee);
             }
-            return;
+            else if (sum < 0) {
+                System.out.println("Сумма сравнения не может быть меньше 0");
+            }
+
         }
+
     }
 
 
-    public void findMoreThanOrEqualTo(int number) {
+    public void findMoreThanOrEqualTo(Employee[] employees, int sum) {
+        System.out.println("Работники с зарплатой больше " + sum + " рублей.");
         for (Employee employee : employees) {
-            if (employee != null && employee.getSalary() >= number) {
+            if (employee != null && employee.getSalary() >= sum) {
                 System.out.println(employee);
             }
-            return;
+            else if (sum < 0) {
+                System.out.println("Сумма сравнения не может быть меньше 0");
+            }
+
         }
     }
 }

@@ -3,10 +3,10 @@ import java.util.Objects;
 public class Employee {
 
     private static int countEmployeeID = 1;
-    private int employeeID;
-    private String employee;
-    private String businessUnit;
-    private double salary;
+    public int employeeID;
+    public String employee;
+    public String businessUnit;
+    public double salary;
 
 
     public Employee (String employee, String businessUnit, double salary) {
@@ -21,22 +21,12 @@ public class Employee {
         return employee;
     }
 
-    public String getBusinessUnit() {
-        return businessUnit;
-    }
+
 
     public double getSalary() {
         return salary;
     }
 
-
-    public int getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setBusinessUnit(String businessUnit) {
-        this.businessUnit = businessUnit;
-    }
 
     public void setSalary(double salary) {
         this.salary = salary;
