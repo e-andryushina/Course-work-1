@@ -1,48 +1,58 @@
 public class Main {
 
-    public static Employee[] employee = new Employee[10];
-
 
     public static void main(String[] args) {
         EmployeeReport employeeReport = new EmployeeReport();
 
-        employee[0] = new Employee("Алексеев Алексей", "5", 245643.0);
-        employee[1] = new Employee("Сергеев Сергей", "5", 122456.0);
-        employee[2] = new Employee("Александров Александр", "5", 85320.0);
-        employee[3] = new Employee("Иванов Иван", "5", 135890.0);
-        employee[4] = new Employee("Глебов Глеб", "5", 156885.0);
-        employee[5] = new Employee("Андреев Андрей", "5", 74568.0);
-        employee[6] = new Employee("Екатеринина Екатерина", "5", 98543.0);
-        employee[7] = new Employee("Алехина Алеся", "5", 65439.0);
+        employeeReport.addEmployee("Сергеев Сергей", 3, 122456.0);
+        employeeReport.addEmployee("Александров Александр", 1, 85320.0);
+        employeeReport.addEmployee("Иванов Иван", 4, 135890.0);
+        employeeReport.addEmployee("Маринина Марина", 8, 178990.0);
+        employeeReport.addEmployee("Глебов Глеб", 4, 156885.0);
+        employeeReport.addEmployee("", 3, 74568.0);
+        employeeReport.addEmployee("Екатеринина Екатерина", 1, 98543.0);
+        employeeReport.addEmployee("Алехина Алеся", 2, 65439.0);
 
 
 
-
-        employeeReport.printAllEmployees(employee);
+        employeeReport.printAllEmployeesBU(4);
         System.out.println();
 
         System.out.println("Сумма затрат на оплату труда составляет: " +
-                employeeReport.salaryMonthTotal(employee));
+                employeeReport.salaryMonthTotal());
         System.out.println();
 
-        employeeReport.salaryMonthAverage(employee);
+        employeeReport.salaryMonthAverage();
         System.out.println();
 
-        employeeReport.salaryMonthMax(employee);
+        employeeReport.salaryMonthMax();
         System.out.println();
 
-        employeeReport.salaryMonthMin(employee);
+        employeeReport.salaryMonthMin();
         System.out.println();
 
-        employeeReport.findLessThan(employee,100_000);
+        employeeReport.findLessThan(100_000);
         System.out.println();
 
 
-        employeeReport.findMoreThanOrEqualTo(employee,100_000);
+        employeeReport.findMoreThanOrEqualTo(100_000);
         System.out.println();
 
-        employeeReport.salaryIndexation(employee,0.04);
+        employeeReport.salaryIndexation(0.04);
         System.out.println();
+
+        employeeReport.changeEmployeeSalary(5, 177904.0);
+        System.out.println();
+
+        employeeReport.changeEmployeeBusinessUnit(4, 3);
+        System.out.println();
+
+        employeeReport.removeEmployee(8);
+        System.out.println();
+
+        employeeReport.printAllEmployees();
+
+
 
     }
 

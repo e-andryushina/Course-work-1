@@ -3,13 +3,13 @@ import java.util.Objects;
 public class Employee {
 
     private static int countEmployeeID = 1;
-    public int employeeID;
-    public String employee;
-    public String businessUnit;
-    public double salary;
+    private final int employeeID;
+    private String employee;
+    private int businessUnit;
+    private double salary;
 
 
-    public Employee (String employee, String businessUnit, double salary) {
+    public Employee (String employee, int businessUnit, double salary) {
         this.employeeID = countEmployeeID++;
         this.employee = employee;
         this.businessUnit = businessUnit;
@@ -17,24 +17,57 @@ public class Employee {
 
     }
 
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
     public String getEmployee() {
         return employee;
     }
 
-
+    public int getBusinessUnit() {
+        return businessUnit;
+    }
 
     public double getSalary() {
         return salary;
     }
 
+    public void setEmployee(String employee) {
+        if (employee==null || employee.isEmpty() || employee.isBlank()) {
+            System.out.println("ID:" + getEmployeeID() + ": Пожалуйста, проверьте введенные данные (Ф.И.О.)");
+            return;
+        }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+        this.employee = employee;
     }
 
 
+    public void setSalary(double salary) {
+        if (salary > 0) {
+        this.salary = salary;
+    }
+        else this.salary = Math.abs(salary);
+
+    }
+
+
+
+    public void setBusinessUnit(int businessUnit) {
+        if (businessUnit > 0 && businessUnit < 6) {
+            this.businessUnit = businessUnit;
+        }
+        else {
+            System.out.println("ID: " + getEmployeeID() + ": информация по подразделению введена некорректно");
+        }
+    }
+
     @Override
     public String toString() {
+        return "ID: " + employeeID + "/ Employee:" + employee + "/ Salary: " + salary + "/Business unit: " + businessUnit;
+    }
+
+    public String toStringWithoutBU() {
         return "ID: " + employeeID + "/ Employee:" + employee + "/ Salary: " + salary;
     }
 
